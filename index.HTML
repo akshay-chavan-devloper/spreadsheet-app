@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spreadsheet App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    
+        td {
+            cursor: pointer;
+        }
+        .selected-cell {
+            background-color: lightblue; /* Highlight selected cells */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toolbar with options like sum, average, etc. -->
+    <div class="toolbar">
+        <!--button onclick="setCellType()">Set Cell Data Type</button-->
+        <button onclick="addRow()">Add Row</button>
+        <button onclick="addColumn()">Add Column</button>
+        <button onclick="deleteRow(prompt('Enter row index to delete:'))">Delete Row</button>
+        <button onclick="deleteColumn(prompt('Enter column index to delete:'))">Delete Column</button>
+        <button id="calculate-sum">Sum</button>
+        <button id="calculate-average">Average</button>
+        <button id="clear-cells">Clear</button>
+        <button onclick="removeDuplicateCells()">Remove Duplicates</button>
+        <button onclick="generateChart()">Generate Chart</button>
+        </div>
+    <div class="toolbar formatting-toolbar">
+        <button onclick="applyFormatting('bold')">Bold</button>
+        <button onclick="applyFormatting('italic')">Italic</button>
+        <button onclick="applyFormatting('color', prompt('Enter a color (e.g., red, #ff0000):'))">Text Color</button>
+        <button onclick="applyFormatting('fontSize', prompt('Enter font size (e.g., 14px):'))">Font Size</button>
+    </div>
+    <div id="chartContainer" style="display:none; position: fixed; top: 10%; left: 10%; width: 80%; height: 80%; background: white; border: 1px solid #ccc; padding: 20px; z-index: 1000;">
+        <canvas id="chartCanvas"></canvas>
+        <button onclick="closeChart()">Close</button>
+    </div>
+
+    <!-- Formula Bar -->
+    <input type="text" id="formulaBar" placeholder="Enter formula or value" oninput="updateFormula()">
+<button onclick="applyFormula()">Apply Formula</button>
+
+    <!-- Table to simulate the spreadsheet -->
+    <table id="spreadsheet">
+        <thead>
+            <tr>
+                <th> </th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td contenteditable="true" data-row="0" data-col="0" ></td>
+                <td contenteditable="true" data-row="0" data-col="1"></td>
+                <td contenteditable="true" data-row="0" data-col="2"></td>
+                <td contenteditable="true" data-row="0" data-col="3"></td> 
+            </tr>
+            <tr>
+                <td>2</td>
+                <td contenteditable="true" data-row="1" data-col="0"></td>
+                <td contenteditable="true" data-row="1" data-col="1"></td>
+                <td contenteditable="true" data-row="1" data-col="2"></td>
+                <td contenteditable="true" data-row="1" data-col="3"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td contenteditable="true" data-row="2" data-col="0"></td>
+                <td contenteditable="true" data-row="2" data-col="1"></td>
+                <td contenteditable="true" data-row="2" data-col="2"></td>
+                <td contenteditable="true" data-row="2" data-col="3"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="results"></p>
+    <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
