@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.toolbar {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+input#formulaBar {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+/* Highlight selected cells */
+td.selected {
+    background-color: lightblue;
+    border: 2px solid blue;
+}
+
+/* Add dragging feedback */
+td[data-row][data-col] {
+    cursor: grab;
+}
+
+td[data-row][data-col]:active {
+    cursor: grabbing;
+}
+
+
+/* Buttons for calculation options */
+#calculation-options button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
